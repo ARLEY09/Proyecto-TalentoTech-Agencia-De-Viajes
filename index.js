@@ -1,22 +1,31 @@
 import express from 'express';
-import router from './routes/index.js'
+import router from './routes/index.js';
 
 const app = express();
 
 
-//Definimos el puesto que vamos a usar
+//Definir puerto
 const port = process.env.PORT || 4000;
 
-// habilitar pug (lo usamos para tamplates o vistas)
-app.set('view engine','pug')
+//Habilitar PUG
+app.set('view engine', 'pug');
 
-//Definimos la carpeta publica
-app.use(express.static('public'));
+//Obtener el año actual
+app.use( (req, res, next) => {
+    const year = new Date();
 
-//Agregamos las rutas
-app.use('/',router)
+    res.locals.actualYear = year.getFullYear();
+    return next();
+
+});
+
+//Agregar Router
+app.use('/', router);
+
+//Definir la carpeta publica
+app.use(express.static('public'))
 
 
-app.listen(port, () => {
-    console.log(`El servidor esta funcionando en el puerto ${port}`)
+app.listen(port,() => {
+    console.log(`El Servidor esta funcionando en el puerto ${port}`)
 })

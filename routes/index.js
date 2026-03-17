@@ -1,24 +1,40 @@
 import express from 'express';
 
-
 const router = express.Router();
 
-router.get('/inicio', (req, res)=>{
-    res.render('inicio')
+router.get('/', (req, res) => {
+    
+    res.render('inicio', {
+        pagina: 'Inicio'
+    });
+
 });
 
-router.get('/nosotros', (req, res)=>{
+router.get('/nosotros', (req, res) => {
 
-    const viajes ='Ando viajando manito';
+    res.render('nosotros', {
+        pagina: 'Nosotros'
 
-    res.render('nosotros',{
-        viajes: viajes
-    })
+    });
+
 });
 
-router.get('/contacto', (req, res)=>{
-    res.send('Contacto')
+router.get('/viajes', (req, res) => {
+
+    res.render('viajes', {
+        pagina: 'Viajes'
+
+    });
+
 });
 
+router.get('/testimoniales', (req, res) => {
+
+    res.render('testimoniales', {
+        pagina: 'Testimoniales'
+
+    });
+
+});
 
 export default router;
