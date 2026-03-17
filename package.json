@@ -11,7 +11,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "nodemon": "^3.1.14"
   },
@@ -19,6 +19,7 @@
     "chalk": "^5.6.2",
     "dotenv": "^17.3.1",
     "env-var": "^7.5.0",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pug": "^3.0.4"
   }
 }
