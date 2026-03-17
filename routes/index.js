@@ -28,10 +28,10 @@ router.get('/viajes', (req, res) => {
 
 });
 
-router.get('/testimoniales', (req, res) => {
+router.get('/experiencias', (req, res) => {
 
-    res.render('testimoniales', {
-        pagina: 'Testimoniales'
+    res.render('experiencias', {
+        pagina: 'Experiencias'
 
     });
 
