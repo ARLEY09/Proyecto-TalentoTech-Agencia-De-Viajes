@@ -1,4 +1,3 @@
-// const express = require('express');
 import express from 'express';
 import router from './routes/index.js'
 
@@ -11,9 +10,13 @@ const port = process.env.PORT || 4000;
 // habilitar pug (lo usamos para tamplates o vistas)
 app.set('view engine','pug')
 
+//Definimos la carpeta publica
+app.use(express.static('public'));
+
 //Agregamos las rutas
 app.use('/',router)
 
-app.listen(() => {
+
+app.listen(port, () => {
     console.log(`El servidor esta funcionando en el puerto ${port}`)
 })

@@ -3,12 +3,17 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', (req, res)=>{
-    res.send('Inicio')
+router.get('/inicio', (req, res)=>{
+    res.render('inicio')
 });
 
 router.get('/nosotros', (req, res)=>{
-    res.send('Nosotros')
+
+    const viajes ='Ando viajando manito';
+
+    res.render('nosotros',{
+        viajes: viajes
+    })
 });
 
 router.get('/contacto', (req, res)=>{
