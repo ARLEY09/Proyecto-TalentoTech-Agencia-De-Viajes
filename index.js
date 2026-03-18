@@ -1,11 +1,35 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import router from './routes/index.js';
+import mongoose from 'mongoose';
+
+dotenv.config()
 
 const app = express();
+
+app.use(express.json())//middleware que permite parsear json en las solicitudes
 
 
 //Definir puerto
 const port = process.env.PORT || 4000;
+const db_url = process.env.DB_URL
+
+console.log(db_url)
+
+/*
+mongoose.connect(db_url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(()=> console.log('conexion exitosa'))
+.catch((error)=>console.log('error en la base de datos'))
+*/
+
+mongoose.connect(db_url)
+    .then(() => console.log('Conexión exitosa a MongoDB'))
+    .catch((error) => {
+        console.log('Error detallado de conexión:');
+        console.error(error); // Esto te dirá exactamente QUÉ falló
+    });
 
 //Habilitar PUG
 app.set('view engine', 'pug');
@@ -21,7 +45,7 @@ app.use( (req, res, next) => {
 });
 
 //Agregar Router
-app.use('/', router);
+app.use('/', router);  
 
 //Definir la carpeta publica
 app.use(express.static('public'))
