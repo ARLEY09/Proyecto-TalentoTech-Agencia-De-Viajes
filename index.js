@@ -1,19 +1,56 @@
-// const express = require('express');
 import express from 'express';
-import router from './routes/index.js'
+import dotenv from 'dotenv';
+import router from './routes/index.js';
+import mongoose from 'mongoose';
+
+dotenv.config()
 
 const app = express();
 
+app.use(express.json())//middleware que permite parsear json en las solicitudes
 
-//Definimos el puesto que vamos a usar
+
+//Definir puerto
 const port = process.env.PORT || 4000;
+const db_url = process.env.DB_URL
 
-// habilitar pug (lo usamos para tamplates o vistas)
-app.set('view engine','pug')
+console.log(db_url)
 
-//Agregamos las rutas
-app.use('/',router)
+/*
+mongoose.connect(db_url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(()=> console.log('conexion exitosa'))
+.catch((error)=>console.log('error en la base de datos'))
+*/
 
-app.listen(() => {
-    console.log(`El servidor esta funcionando en el puerto ${port}`)
+mongoose.connect(db_url)
+    .then(() => console.log('Conexión exitosa a MongoDB'))
+    .catch((error) => {
+        console.log('Error detallado de conexión:');
+        console.error(error); // Esto te dirá exactamente QUÉ falló
+    });
+
+//Habilitar PUG
+app.set('view engine', 'pug');
+
+//Obtener el año actual
+app.use( (req, res, next) => {
+    const year = new Date();
+
+    res.locals.actualYear = year.getFullYear();
+    res.locals.nombresitio = "Agencia de Viajes";
+    next();
+
+});
+
+//Agregar Router
+app.use('/', router);  
+
+//Definir la carpeta publica
+app.use(express.static('public'))
+
+
+app.listen(port,() => {
+    console.log(`El Servidor esta funcionando en el puerto ${port}`)
 })

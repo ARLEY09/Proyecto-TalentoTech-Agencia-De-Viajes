@@ -1,0 +1,33 @@
+extends ./layout/index
+
+block contenido
+    main.container.mt-5
+        .row 
+            .col-md-5 
+                img(src="img/buenaventura.jpg", alt="imagen de Buenaventura", class="img-fluid")
+                img(src="img/buenaventura2.jpg", alt="imagen de Buenaventura", class="img-fluid")
+                img(src="img/atardecer.jpg", alt="imagen de Buenaventura", class="img-fluid")
+            .col-md-7
+                h1 #{pagina}
+                blockquote Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna felis, venenatis eu laoreet tempus, viverra at libero. In ac varius magna. Etiam maximus metus eget erat rhoncus vestibulum. Curabitur tincidunt arcu vitae sem auctor scelerisque. Sed finibus placerat lorem, eu lobortis erat luctus et. Nulla ultrices scelerisque accumsan. Quisque mauris leo, tincidunt sed sem ut, ullamcorper sollicitudin ipsum. Mauris rutrum massa magna, at molestie neque maximus euismod.
+                p Nulla arcu diam, aliquam id gravida in, varius et arcu. Pellentesque vulputate sodales pretium. Maecenas at orci efficitur, consequat lacus vel, semper ante. In hac habitasse platea dictumst. Aliquam varius pulvinar nisl sed sodales. Sed elementum blandit efficitur. Maecenas sit amet elit sit amet nisl faucibus maximus. Mauris vitae felis malesuada, posuere ante quis, fringilla diam. 
+                p Pellentesque ut erat ipsum. Cras cursus lectus eu pellentesque congue. Phasellus lectus ligula, sodales at nibh vitae, tempor pharetra dui. Donec leo lorem, viverra eget consequat sit amet, faucibus id diam. Curabitur blandit, turpis nec iaculis porta, enim nulla pharetra augue, vel efficitur eros nulla ornare ante. Proin vehicula vulputate eros, in tincidunt purus interdum sit amet.
+
+    .listado-iconos 
+        .container.mt-5.py-5.text-center 
+            .row    
+                .col-md-4  
+                    img(src="img/seguridad.png", alt="icono seguridad", class="img-fluid mb-4") 
+                    h2.mb-4 Seguridad 
+                    p Pellentesque ut erat ipsum. Cras cursus lectus eu pellentesque congue. Phasellus lectus ligula.
+                
+                .col-md-4
+                    img(src="img/destino.png", alt="icono destinos", class="img-fluid mb-4") 
+                    h2.mb-4 Mejores Destinos 
+                    p Pellentesque ut erat ipsum. Cras cursus lectus eu pellentesque congue. Phasellus lectus ligula.
+                
+                .col-md-4
+                    img(src="img/preciobajo.png", alt="icono precios", class="img-fluid mb-4") 
+                    h2.mb-4 Mejores precios 
+                    p Pellentesque ut erat ipsum. Cras cursus lectus eu pellentesque congue. Phasellus lectus ligula.
+        
