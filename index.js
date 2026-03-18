@@ -17,19 +17,25 @@ const db_url = process.env.DB_URL
 console.log(db_url)
 
 /*
-mongoose.connect(db_url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(()=> console.log('conexion exitosa'))
-.catch((error)=>console.log('error en la base de datos'))
-*/
-
 mongoose.connect(db_url)
     .then(() => console.log('Conexión exitosa a MongoDB'))
     .catch((error) => {
         console.log('Error detallado de conexión:');
         console.error(error); // Esto te dirá exactamente QUÉ falló
     });
+*/
+ const conectar = async()=>{ 
+    try{
+        mongoose.connect(process.env.DB_URL)
+        console.log('Conexión exitosa a MongoDB')
+    }catch(error) {
+        console.log('Error detallado de conexión:');
+        console.error(error); // Esto te dirá exactamente QUÉ falló
+    };
+ }
+
+ conectar.apply();
+
 
 //Habilitar PUG
 app.set('view engine', 'pug');
@@ -41,7 +47,6 @@ app.use( (req, res, next) => {
     res.locals.actualYear = year.getFullYear();
     res.locals.nombresitio = "Agencia de Viajes";
     next();
-
 });
 
 //Agregar Router
