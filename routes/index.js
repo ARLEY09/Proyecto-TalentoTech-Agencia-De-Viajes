@@ -24,6 +24,29 @@ router.post('/api/viajes', async (req, res) => {
 });
 
 
+router.put('/id', async (req,res)=>{
+    try{
+        const actualizar_viaje = await Viaje.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        res.status(200).json(actualizar_viaje)
+    }catch(error){
+        res.status(500).json({
+            message: error.message
+        })
+    }
+})
+
+router.delete('/id', async (req,res)=>{
+    try{
+        await Viaje.findByIdAndDelete(req.params.id)
+        res.status(200).json
+    }catch(error){
+        res.status(500).json({
+            message: error.message
+        })
+    }
+})
+
+
 router.get('/', (req, res) => {
     
     res.render('inicio', {
